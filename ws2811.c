@@ -1200,6 +1200,9 @@ ws2811_return_t  ws2811_render(ws2811_t *ws2811)
                     {
                         uint32_t *wordptr = &((uint32_t *)pxl_raw)[wordpos];   // PWM & PCM
                         volatile uint8_t  *byteptr = &pxl_raw[bytepos];    // SPI
+                        if((bitpos == 7) && (l == 0)) {
+                          break;
+                        }
 
                         if (driver_mode == SPI)
                         {
